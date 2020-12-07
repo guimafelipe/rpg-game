@@ -78,7 +78,7 @@ func _check_interact():
 		return
 	if Input.is_action_just_pressed("ui_accept") and target:
 		target.interact()
-		state = State.INTERACTING
+		#state = State.INTERACTING
 
 
 func _physics_process(_delta):
