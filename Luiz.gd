@@ -52,7 +52,7 @@ func _get_direction():
 
 func _clear_target():
 	if target:
-		target.disconnect("finished_interaction", self, "_on_finished_interacting")
+		# target.disconnect("finished_interaction", self, "_on_finished_interacting")
 		target.remove_focus()
 		target = null
 
@@ -69,11 +69,13 @@ func _check_raycast():
 			return
 		_clear_target()
 		target = obj.get_parent()
-		target.connect("finished_interaction", self, "_on_finished_interacting")
+		# target.connect("finished_interaction", self, "_on_finished_interacting")
 		target.focus()
 
 
 func _check_interact():
+	if state != State.IDLE:
+		return
 	if Input.is_action_just_pressed("ui_accept") and target:
 		target.interact()
 		state = State.INTERACTING
@@ -91,7 +93,16 @@ func _physics_process(_delta):
 
 func _ready():
 	state = State.IDLE
+	var dialogue_box = get_parent().get_node("DialogueBox")
+	if dialogue_box:
+		dialogue_box.connect("dialogue_started", self, "_on_started_dialogue")
+		dialogue_box.connect("dialogue_finished", self, "_on_finished_dialogue")
 
+func _on_started_dialogue():
+	state = State.INTERACTING
+
+func _on_finished_dialogue():
+	state = State.IDLE
 
 func _on_finished_interacting():
 	state = State.IDLE
