@@ -1,3 +1,4 @@
+class_name DialogueBox
 extends Control
 
 signal dialogue_started

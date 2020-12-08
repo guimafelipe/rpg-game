@@ -1,3 +1,4 @@
+class_name Luiz
 extends KinematicBody2D
 
 enum State {IDLE, INTERACTING, CUTSCENE}
@@ -91,28 +92,42 @@ func _physics_process(_delta):
 	_check_interact()
 
 
-func _ready():
+func set_dialogue_box(dialogue_box):
+	dialogue_box.connect("dialogue_started", self, "_on_started_dialogue")
+	dialogue_box.connect("dialogue_finished", self, "_on_finished_dialogue")
+
+
+func set_inventory_window(inventory_window):
+	inventory_window.connect("inventory_opened", self, "_on_inventory_opened")
+	inventory_window.connect("inventory_closed", self, "_on_inventory_closed")
+
+
+func set_state_cutscene():
+	state = State.CUTSCENE
+
+
+func set_state_idle():
 	state = State.IDLE
-	var dialogue_box = get_parent().get_node("DialogueBox")
-	if dialogue_box:
-		dialogue_box.connect("dialogue_started", self, "_on_started_dialogue")
-		dialogue_box.connect("dialogue_finished", self, "_on_finished_dialogue")
-	var inventory_window = get_parent().get_node("InventoryWindow")
-	if inventory_window:
-		inventory_window.connect("inventory_opened", self, "_on_inventory_opened")
-		inventory_window.connect("inventory_closed", self, "_on_inventory_closed")
+
+
+func set_state_interacting():
+	state = State.INTERACTING
+
+
+func _ready():
+	set_state_idle()
 
 func _on_started_dialogue():
-	state = State.INTERACTING
+	set_state_interacting()
 
 func _on_finished_dialogue():
-	state = State.IDLE
+	set_state_idle()
 
 func _on_finished_interacting():
-	state = State.IDLE
+	set_state_idle()
 
 func _on_inventory_opened():
-	state = State.INTERACTING
+	set_state_interacting()
 
 func _on_inventory_closed():
-	state = State.IDLE
+	set_state_idle()

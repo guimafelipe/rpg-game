@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Cutscene",
+"language": "GDScript",
+"path": "res://Cutscene.gd"
+}, {
+"base": "Control",
+"class": "DialogueBox",
+"language": "GDScript",
+"path": "res://UI/Dialogue/DialogueBox.gd"
+}, {
+"base": "Node2D",
+"class": "GameScene",
+"language": "GDScript",
+"path": "res://GameScene.gd"
+}, {
 "base": "Node2D",
 "class": "InteractableObject",
 "language": "GDScript",
@@ -24,16 +39,31 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Inventory/InventorySlot.gd"
 }, {
+"base": "Control",
+"class": "InventoryWindow",
+"language": "GDScript",
+"path": "res://UI/Inventory/InventoryWindow.gd"
+}, {
 "base": "Resource",
 "class": "Item",
 "language": "GDScript",
 "path": "res://Items/Item.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Luiz",
+"language": "GDScript",
+"path": "res://Luiz/Luiz.gd"
 } ]
 _global_script_class_icons={
+"Cutscene": "",
+"DialogueBox": "",
+"GameScene": "",
 "InteractableObject": "",
 "Inventory": "",
 "InventorySlot": "",
-"Item": ""
+"InventoryWindow": "",
+"Item": "",
+"Luiz": ""
 }
 
 [application]
