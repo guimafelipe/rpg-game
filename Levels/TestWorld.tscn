@@ -26,7 +26,7 @@ extents = Vector2( 16, 16 )
 resource_local_to_scene = true
 extents = Vector2( 16, 16 )
 
-[node name="TestWorld" type="Node2D"]
+[node name="TestWorld" type="YSort"]
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 1 )
