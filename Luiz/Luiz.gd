@@ -97,6 +97,10 @@ func _ready():
 	if dialogue_box:
 		dialogue_box.connect("dialogue_started", self, "_on_started_dialogue")
 		dialogue_box.connect("dialogue_finished", self, "_on_finished_dialogue")
+	var inventory_window = get_parent().get_node("InventoryWindow")
+	if inventory_window:
+		inventory_window.connect("inventory_opened", self, "_on_inventory_opened")
+		inventory_window.connect("inventory_closed", self, "_on_inventory_closed")
 
 func _on_started_dialogue():
 	state = State.INTERACTING
@@ -105,4 +109,10 @@ func _on_finished_dialogue():
 	state = State.IDLE
 
 func _on_finished_interacting():
+	state = State.IDLE
+
+func _on_inventory_opened():
+	state = State.INTERACTING
+
+func _on_inventory_closed():
 	state = State.IDLE

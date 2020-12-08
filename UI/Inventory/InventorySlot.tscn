@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Inventory/InventorySlot.gd" type="Script" id=1]
+[ext_resource path="res://Assets/VasoDeFlor.png" type="Texture" id=2]
+
+[node name="InventorySlot" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_left = 295.0
+margin_top = 155.0
+margin_right = 345.0
+margin_bottom = 205.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+color = Color( 0.811765, 0.592157, 0.592157, 0.658824 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemTextureRect" type="TextureRect" parent="."]
+margin_left = 296.0
+margin_top = 156.0
+margin_right = 344.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 48, 48 )
+texture = ExtResource( 2 )
+expand = true
+[connection signal="focus_entered" from="." to="." method="_on_InventorySlot_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_InventorySlot_focus_exited"]

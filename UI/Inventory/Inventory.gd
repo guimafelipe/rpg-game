@@ -13,5 +13,6 @@ func add_item(item : Item):
 	items.sort_custom(self, "items_comp")
 	emit_signal("items_changed")
 
-func remove_item(item_name : String):
+func remove_item(_item_name : String):
 	pass
+

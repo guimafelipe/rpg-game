@@ -1,6 +1,6 @@
 extends GridContainer
 
-var inventory = preload("res://Inventory.tres")
+onready var inventory = preload("res://UI/Inventory/Inventory.tres")
 
 func _ready():
 	inventory.connect("items_changed", self, "_on_items_changed")
@@ -19,6 +19,8 @@ func update_inventory_display():
 	for i in range(n, get_child_count()):
 		var slot = get_child(i)
 		slot.display_item(null)
+	if n > 0:
+		get_child(0).grab_focus()
 
 func _on_items_changed():
 	update_inventory_display()

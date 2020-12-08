@@ -12,12 +12,17 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "InteractableObject",
 "language": "GDScript",
-"path": "res://InteractableObject.gd"
+"path": "res://InteractableObjects/InteractableObject.gd"
 }, {
 "base": "Resource",
 "class": "Inventory",
 "language": "GDScript",
-"path": "res://Inventory.gd"
+"path": "res://UI/Inventory/Inventory.gd"
+}, {
+"base": "CenterContainer",
+"class": "InventorySlot",
+"language": "GDScript",
+"path": "res://UI/Inventory/InventorySlot.gd"
 }, {
 "base": "Resource",
 "class": "Item",
@@ -27,13 +32,14 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "InteractableObject": "",
 "Inventory": "",
+"InventorySlot": "",
 "Item": ""
 }
 
 [application]
 
 config/name="Rpg"
-run/main_scene="res://TestWorld.tscn"
+run/main_scene="res://Levels/TestWorld.tscn"
 config/icon="res://icon.png"
 
 [autoload]

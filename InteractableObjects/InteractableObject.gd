@@ -14,6 +14,7 @@ func focus():
 func remove_focus():
 	print("saí do foco")
 	print(name)
+	emit_signal("finished_interaction")
 
 func interact():
 	# override this funcion in children classes
