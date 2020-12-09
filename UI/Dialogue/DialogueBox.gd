@@ -12,9 +12,15 @@ var can_go = false
 onready var textbox = $RichTextLabel
 onready var tween = $Tween
 
+var in_cutscene = false
+
 func finish_conversation():
 	emit_signal("dialogue_finished")
 	hide()
+
+
+func set_in_cutscene(val: bool):
+	in_cutscene = val
 
 
 func go_next():
@@ -56,6 +62,9 @@ func _load_dialogue(dialogue_id) -> Dictionary:
 
 
 func _process(_delta):
+	if in_cutscene:
+		return
+	
 	if Input.is_action_just_pressed("ui_accept") and can_go:
 		print("oi")
 		go_next()
